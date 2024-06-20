@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+   <!-- initialize the control node -->
+   <node pkg="ackerman_pkg" type="ackerman_pkg_node" name="Ackermann_Robot_node" output="screen"  />
+   
+   <!-- initialize the teleop node -->
+   <node pkg="ackerman_teleop" type="ackerman_teleop_node" name="Teleop_node" output="screen"  />
+
+</launch>

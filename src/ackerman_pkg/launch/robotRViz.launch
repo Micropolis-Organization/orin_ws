@@ -1,0 +1,7 @@
+<launch>
+	<param name="robot_description" textfile="$(find ackerman_pkg)/urdf/m2_test.urdf" />
+	<!-- <arg name="rvizconfig" default="$(find ackerman_pkg)/rviz/m2d_display.rviz" /> -->
+	<arg name="rvizconfig" default="$(find ackerman_pkg)/rviz/m2d_display_new_controller.rviz" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+</launch>
+<!--  -->

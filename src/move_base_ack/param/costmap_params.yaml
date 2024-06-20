@@ -1,0 +1,15 @@
+obstacle_range: 10.0
+raytrace_range: 20.0
+
+footprint: [[-1.25, -1.0], [-1.25, 1.0], [1.25, 1.0], [1.25, -1.0]]
+# footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.105, 0.105], [0.105, -0.105]]
+#robot_radius: 0.105
+
+inflation_radius: 0.1
+cost_scaling_factor: 15
+
+map_type: costmap
+observation_sources: scan
+scan: {sensor_frame: laser, data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+# observation_sources: pcl
+# pcl: {sensor_frame: lidar, data_type: PointCloud2, topic: /ground_filtered, marking: true, clearing: true }

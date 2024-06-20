@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="model_name" default="m2d" />
+
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find webots_ros)/config/rosconsole.config" />
+  <rosparam file="$(find ackerman_pkg)/config/webots_interface.yaml" command="load"
+  ns="$(arg model_name)" />
+  <!-- <param name="use_sim_time" value="true"/> -->
+  
+  <!-- start Webots -->
+  <arg name="no_gui" default="false," doc="Start Webots with minimal GUI" />
+  <include file="$(find webots_ros)/launch/webots.launch">
+    <arg name="mode" value="realtime" />
+    <arg name="no_gui" value="$(arg no_gui)" />
+    <arg name="world"
+    value="$(find ackerman_pkg)/../webots_project/my_project1/worlds/warehouse_m2d_supervisor_lite_new_controller_origin.wbt" />
+  </include>
+  <!-- value="$(find ackerman_pkg)/../webots_project/my_project1/worlds/warehouse_m2d_supervisor_lite.wbt" />  -->
+
+  <param name="robot_description" textfile="$(find ackerman_pkg)/urdf/m2d.urdf"/>
+
+
+  <!-- robot_state_publisher -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="m2d_state_publisher" respawn="true" respawn_delay="3"/>
+
+
+  <!-- joint_state_publisher -->
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="m2d_joint_state_publisher" respawn="true" respawn_delay="3"/>
+
+  
+  <node pkg="tf" type="static_transform_publisher" name="lidar_tf_pub" output="screen" args="0.425 0 0.84 0 0 0 base_link lidar 100" />
+
+  <!-- launch param file -->
+  <rosparam file="$(find ackerman_pkg)/config/webots_interface.yaml" command="load" ns="$(arg model_name)" />
+
+  <!-- launch PointCloud Ground Extractor -->
+  <include file="$(find pcl_ground_extractor)/launch/pcl_ground_extractor.launch"/>
+    
+  <!-- launch PointCloud To LaserScan -->
+  <include file="$(find ackerman_pkg)/launch/pcd_to_scan_webots.launch"/>
+  <!-- <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" > 
+     <arg name="port" value="9090"/>
+  </include>   -->
+</launch>

@@ -1,0 +1,48 @@
+<launch>
+	<!-- move_base -->
+	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+		<rosparam file="$(find move_base_ack)/param/costmap_params_global.yaml" command="load" ns="global_costmap" /> 
+		<rosparam file="$(find move_base_ack)/param/costmap_params_global.yaml" command="load" ns="local_costmap" />
+		<rosparam file="$(find move_base_ack)/param/local_costmap_params.yaml" command="load" />
+		<rosparam file="$(find move_base_ack)/param/global_costmap_params.yaml" command="load" />
+		<rosparam file="$(find move_base_ack)/param/move_base_params.yaml" command="load" />
+		<param name="clearing_rotation_allowed" value="false" />
+		<param name="recovery_behavior_enabled" value="false" />
+		<param name="base_global_planner" value="navfn/NavfnROS" />
+		<rosparam file="$(find move_base_ack)/param/global_planner.yaml" command="load" />
+                <!--
+		<param name="base_global_planner" value="hybrid_astar_planner/HybridAStarPlanner" />
+		-->
+                <!--
+		<param name="base_local_planner" value="mpc_local_planner/MpcLocalPlannerROS" />
+		<rosparam file="$(find mpc_local_planner_examples)/cfg/carlike/mpc_local_planner_params.yaml" command="load" />
+		-->
+		<!--<param name="base_local_planner" value="neo_local_planner/NeoLocalPlanner_new" /> -->
+
+		<param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+		<rosparam file="$(find move_base_ack)/param/tep_local_planner_params.yaml" command="load" />
+
+		<!--
+		<param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS" />
+		<rosparam file="$(find move_base_ack)/param/TrajectoryPlannerROS.yaml" command="load" />
+		-->
+		<!--
+		<param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+		<rosparam file="$(find move_base_ack)/param/dwa_local_planner_params.yaml" command="load" />
+		-->
+		<remap from="cmd_vel" to="/autonomous_cmd_vel"/>
+	</node>
+
+	<!-- Second node -->
+    <!-- <node pkg="move_base_ack" type="dynamic_cmd_vel.py" name="dynamic_cmd_vel" output="screen">
+    </node> -->
+    <!-- <rosparam param="dynamic_flag">false</rosparam> -->
+
+	<!--
+	<node pkg="teb_local_planner" type="cmd_vel_to_ackermann_drive.py" name="cmd_vel_to_ackermann_drive" output="screen">
+	<param name="twist_cmd_topic" value="cmd_vel"/>
+	<param name="wheelbase" value="1.525"/>
+	</node>
+	-->
+	<!-- <rosparam file="$(find move_base_ack)/param/waypoints.yaml" command="load" ns="" /> -->
+</launch>

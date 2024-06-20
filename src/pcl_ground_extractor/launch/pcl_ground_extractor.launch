@@ -1,0 +1,6 @@
+<launch>
+    <node name="pcl_ground_extractor_node" pkg="pcl_ground_extractor" type="pcl_ground_extractor_node" output="screen">
+        <param name="input_topic" value="/velodyne_points" />
+        <param name="output_topic" value="/ground_filtered" />
+    </node>
+</launch>

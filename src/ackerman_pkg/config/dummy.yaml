@@ -1,0 +1,4 @@
+robot_state_topic : "robot_state"
+emergency_cause_topic : "emergency_cause"
+battery_topic : "battery"
+connection_quality_topic : "connection_quality"

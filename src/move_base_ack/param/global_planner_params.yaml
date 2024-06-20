@@ -1,0 +1,14 @@
+GlobalPlanner:
+
+  publish_potential: true
+  visualize_potential: true
+
+  cost_factor: 0.55
+  neutral_cost: 66
+  lethal_cost: 253
+
+  use_dijkstra: false
+  use_grid_path: false
+  use_quadratic: false
+  old_navfn_behavior: true
+  # max_turning_radius: 3.77

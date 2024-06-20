@@ -1,0 +1,37 @@
+time_step: 16
+
+# <param> : <topic>
+odom_topic_out: /odom
+camera_ns_topic: /camera
+cmd_vel_topic: /cmd_vel
+linear_vel_cmd: /velocity
+steering_cmd: /steering_rad
+pcl_topic: /cloud
+imu_topic: /imu
+battery_topic: /battery
+
+odom_frame: odom
+base_frame: base_link
+
+wheel_base: 1.545
+track_width: 1.23
+wheel_radius: 0.2605
+min_steering_angle: -0.35
+max_steering_angle: 0.35
+robot_battery_capacity_webots: 520000000 #unit in joules
+# you can add more cameras here using the same sequence and by adjusting the number of cameras
+num_of_cams: 1
+cam_1: Front_Camera
+
+#   <node>   :    <.proto>
+number_of_drive_motors: 4
+drive_motor_1: drive_motor_fl  # front right
+drive_motor_2: drive_motor_fr  # front left
+drive_motor_3: drive_motor_br  # rear right
+drive_motor_4: drive_motor_bl  # rear left
+
+number_of_steering_motors: 4
+steering_motor_1: steering_motor_fr
+steering_motor_2: steering_motor_fl
+steering_motor_3: steering_motor_br
+steering_motor_4: steering_motor_bl

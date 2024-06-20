@@ -1,0 +1,31 @@
+TrajectoryPlannerROS:
+  dwa: true
+  escape_vel: -0.3
+  goal_distance_bias: 1.5
+  heading_lookahead: 1.5
+  max_vel_theta: 0.35
+  max_vel_x: 0.5
+  min_in_place_vel_theta: 0.0
+  min_vel_theta: -0.35
+  min_vel_x: -0.3
+  oscillation_reset_dist: 0.0
+  
+  
+  # angular_sim_granularity:
+  # acc_lim_theta:
+  # acc_lim_x:
+  # acc_lim_y:
+  # escape_reset_dist:
+  # escape_reset_theta:
+  # heading_scoring:
+  # heading_scoring_timestep:
+  # holonomic_robot:
+  # occdist_scale:
+  # path_distance_bias:
+  # restore_defaults:
+  # sim_granularity:
+  # sim_time:
+  # simple_attractor:
+  # vtheta_samples:
+  # vx_samples:
+  # y_vels:
